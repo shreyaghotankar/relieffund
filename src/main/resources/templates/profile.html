@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+	xmlns:layout="http://www.w3.org/1999/xhtml">
+<head>
+
+ <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.4/css/bulma.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+<title>User Info</title>
+</head>
+<body id="samples">
+	<div th:replace="menu :: menu"></div>
+
+	<div id="content" class="container">
+
+		<div>
+			<h2>
+				Profile: <span th:text="${#authentication.principal.fullName}">
+				</span>
+			</h2>
+		</div>
+
+		<div layout:fragment="content">
+
+			<ul>
+				<li th:each="record: ${details}">
+				<span class="label label-info" th:text="Username"></span><span th:text="${record.userName}"></span><br> 
+				<span class="label label-info" th:text="Firstname"></span><span th:text="${record.firstName}"></span><br>
+				<span class="label label-info" th:text="Lastname"></span><span th:text="${record.lastName}"></span><br> 
+				<span class="label label-info" th:text="Email"></span><span th:text="${record.email}"></span>
+				</li>
+			</ul>
+		</div>
+	</div>
+</body>
+</html>

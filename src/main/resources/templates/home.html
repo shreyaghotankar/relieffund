@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+xmlns:sec="http://www.thymeleaf.org/extras/spring-security" xmlns:layout="http://www.w3.org/1999/xhtml">  
+<head> 
+<meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.4/css/bulma.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <title>Relief Fund</title>
+</head>  
+<body>  
+<div th:replace="menu :: menu"> </div>
+<div class="container-fluid">  
+    <div id="content" class="container">  
+  <h1>Welcome to Relief Fund</h1>
+            
+            <div th:if="${#authorization.expression('isAuthenticated()')}">  
+             <h1>Hello! <span th:text="${#authentication.principal.fullName}"></span></h1>
+            </div>  
+              
+            <div th:unless="${#authorization.expression('isAuthenticated()')}">  
+                <h2>You need to Login to proceed..</h2>  
+            </div> 
+            <div th:if="${#authorization.expression('isAuthenticated()')}" class="text container">
+            <div sec:authorize="hasRole('ADMIN')" align="right">
+						 <a th:href="@{/admin}">Admin Dashboard</a>
+						</div>
+                <p>Welcome home, <span th:text="${#authentication.principal.fullName}"> </span>!</p>
+                <p>Visit the <a th:href="@{/profile}">Profile</a> page to view your user information.</p>
+            </div>
+            
+    </div>  
+</div>  
+</body>  
+</html>

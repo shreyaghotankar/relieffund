@@ -1,0 +1,20 @@
+server:
+   port: 8008
+   
+spring:
+  security:
+    oauth2:
+      client:
+        registration:
+          okta:
+            client-id: X
+            client-secret: X
+            rolesClaim: groups
+        
+        provider:
+          okta:
+            issuer-uri: X
+
+
+logout:
+  uri: http://localhost:8008/
