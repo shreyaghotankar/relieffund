@@ -59,13 +59,16 @@
 	</dependencies>
 
 	<build>
-		<plugins>
-			<plugin>
-				<groupId>org.springframework.boot</groupId>
-				<artifactId>spring-boot-maven-plugin</artifactId>
-			</plugin>
-		</plugins>
-		<finalName>relieffund-service</finalName>
-	</build>
+	<plugins>
+		<plugin>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-maven-plugin</artifactId>
+			<configuration>
+				<skipTests>true</skipTests>
+			</configuration>
+		</plugin>
+	</plugins>
+	<finalName>relieffund-service</finalName>
+</build>
 
 </project>
